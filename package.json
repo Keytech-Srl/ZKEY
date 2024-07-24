@@ -1,0 +1,22 @@
+{
+  "name": "zkei",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "webapp/index.html",
+  "scripts": {
+    "start": "fiori run --open \"index.html?sap-ui-xx-viewCache=false\"",
+    "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
+    "deploy": "fiori verify",
+    "deploy-config": "fiori add deploy-config"
+  },
+  "devDependencies": {
+    "@sap/ui5-builder-webide-extension": "^1.1.9",
+    "@sap/ux-ui5-tooling": "1",
+    "@ui5/cli": "^3.10.3",
+    "mbt": "^1.2.27",
+    "rimraf": "^5.0.7",
+    "ui5-task-zipper": "^3.1.4"
+  },
+  "sapuxLayer": "CUSTOMER_BASE"
+}

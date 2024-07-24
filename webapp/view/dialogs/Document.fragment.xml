@@ -1,0 +1,66 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <Dialog id="documentDialog" title="{i18n>invoicesPreAcquireDocument}" class="sapUiContentPadding" contentWidth="50%">
+        <l:VerticalLayout class="sapUiContentPadding" width="100%">
+            <Label design="Bold" text="{i18n>documentDate}" showColon="true" required="true" />
+            <DatePicker id="Budat" displayFormat="dd/MM/yyyy" valueFormat="dd/MM/yyyy" change="clearError" liveChange="clearError" value="{date>/today}">
+                <layoutData>
+                    <l:GridData span="XL4 L4 M4 S12" />
+                </layoutData>
+            </DatePicker>
+
+            <Label labelFor="VendPR" design="Bold" text="{i18n>documentTypeProcessing}" showColon="true" />
+            <MultiInput id="VendPR" change="valueChange" suggestionRows="{matchcodes>/f4_tipo_proc_fat}" suggestionItemSelected="selectSuggestion" valueHelpRequest="openMatchcodes">
+                <layoutData>
+                    <l:GridData span="XL4 L4 M4 S12" />
+                </layoutData>
+                <suggestionColumns>
+                    <Column>
+                        <Text text="{i18n>documentColumn1VendPR}" />
+                    </Column>
+                    <Column>
+                        <Text text="{i18n>documentColumn2VendPR}" />
+                    </Column>
+                </suggestionColumns>
+                <suggestionRows>
+                    <ColumnListItem>
+                        <Text text="{matchcodes>DOMVALUE_L}" />
+                        <Text text="{matchcodes>DDTEXT}" />
+                    </ColumnListItem>
+                </suggestionRows>
+            </MultiInput>
+
+            <Label labelFor="Ebeln" design="Bold" text="{i18n>documentTypeDocument}" showColon="true" required="true" />
+            <MultiInput id="Ebeln" change="valueChange" liveChange="clearError" suggestionRows="{matchcodes>/zf4_tpdocset}" suggestionItemSelected="selectSuggestion" valueHelpRequest="openMatchcodes">
+                <layoutData>
+                    <l:GridData span="XL4 L4 M4 S12" />
+                </layoutData>
+                <suggestionColumns>
+                    <Column>
+                        <Text text="{i18n>documentColumn1Ebeln}" />
+                    </Column>
+                    <Column>
+                        <Text text="{i18n>documentColumn2Ebeln}" />
+                    </Column>
+                </suggestionColumns>
+                <suggestionRows>
+                    <ColumnListItem>
+                        <Text text="{matchcodes>Blart}" />
+                        <Text text="{matchcodes>Ltext}" />
+                    </ColumnListItem>
+                </suggestionRows>
+            </MultiInput>
+
+            <Label labelFor="Blart" design="Bold" showColon="true" text="{i18n>documentPurchase}" />
+            <Input id="Blart" width="100%" />
+        </l:VerticalLayout>
+
+        <beginButton>
+            <Button id="Document--close" text="{i18n>dialogCloseButtonText}" press="closeDialog" />
+        </beginButton>
+        <endButton>
+            <Button id="Document--accept" text="{i18n>dialogAcceptButtonText}" press="changeDocument" type="Emphasized" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

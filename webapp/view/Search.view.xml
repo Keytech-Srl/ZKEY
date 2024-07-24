@@ -1,0 +1,145 @@
+<mvc:View controllerName="com.keytech.zkei.controller.Search" displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m">
+    <Page showHeader="false" floatingFooter="true" class="sapUiContentPadding">
+        <content>
+            <FlexBox direction="Column" justifyContent="Start" backgroundDesign="Solid">
+                <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="2" labelSpanL="2" labelSpanM="2" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="2" emptySpanL="2" emptySpanM="2" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" backgroundDesign="Transparent">
+                    <f:toolbar>
+                        <Toolbar>
+                            <Title text="{i18n>searchParameters}" />
+                        </Toolbar>
+                    </f:toolbar>
+
+                    <f:content>
+                        <!-- Customer -->
+                        <Label text="{i18n>searchCustomer}" required="true" />
+                        <MultiInput id="Bukrs" required="true" change="valueChange" liveChange="clearError" suggestionRows="{matchcodes>/ht001set}" suggestionItemSelected="selectSuggestion" valueHelpRequest="openMatchcodes" maxTokens="1">
+                            <suggestionColumns>
+                                <Column>
+                                    <Text text="{i18n>customerCode}" />
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>customerName}" />
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>customerCity}" />
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>customerCurrency}" />
+                                </Column>
+                            </suggestionColumns>
+                            <suggestionRows>
+                                <ColumnListItem>
+                                    <Text text="{matchcodes>Bukrs}" />
+                                    <Text text="{matchcodes>Butxt}" />
+                                    <Text text="{matchcodes>Ort01}" />
+                                    <Text text="{matchcodes>Waers}" />
+                                </ColumnListItem>
+                            </suggestionRows>
+                        </MultiInput>
+
+                        <!-- Fiscal Year -->
+                        <Label text="{i18n>searchYear}" required="true" />
+                        <Input id="Gjahr" required="true" liveChange="clearError" />
+
+                        <!-- Supplier -->
+                        <Label text="{i18n>searchSupplier}" />
+                        <MultiInput id="Lifnr--from" change="valueChange" liveChange="clearError" suggestionRows="{matchcodes>/kredaset}" suggestionItemSelected="selectSuggestion" valueHelpRequest="openMatchcodes" placeholder="da">
+                            <layoutData>
+                                <l:GridData span="XL4 L4 M4 S12" />
+                            </layoutData>
+                            <suggestionColumns>
+                                <Column>
+                                    <Text text="Supplier Code" />
+                                </Column>
+                                <Column>
+                                    <Text text="Supplier Name" />
+                                </Column>
+                            </suggestionColumns>
+                            <suggestionRows>
+                                <ColumnListItem>
+                                    <Text text="{matchcodes>Lifnr}" />
+                                    <Text text="{matchcodes>Mcod1}" />
+                                </ColumnListItem>
+                            </suggestionRows>
+                        </MultiInput>
+                        <MultiInput id="Lifnr--to" change="valueChange" liveChange="clearError" suggestionRows="{matchcodes>/kredaset}" suggestionItemSelected="selectSuggestion" valueHelpRequest="openMatchcodes" placeholder="a">
+                            <layoutData>
+                                <l:GridData span="XL4 L4 M4 S12" />
+                            </layoutData>
+                            <suggestionColumns>
+                                <Column>
+                                    <Text text="Supplier Code" />
+                                </Column>
+                                <Column>
+                                    <Text text="Supplier Name" />
+                                </Column>
+                            </suggestionColumns>
+                            <suggestionRows>
+                                <ColumnListItem>
+                                    <Text text="{matchcodes>Lifnr}" />
+                                    <Text text="{matchcodes>Mcod1}" />
+                                </ColumnListItem>
+                            </suggestionRows>
+                        </MultiInput>
+
+                        <!-- Doc. Date -->
+                        <Label text="{i18n>searchDate}" />
+                        <DatePicker id="Bldat--from" displayFormat="dd/MM/yyyy" placeholder="da">
+                            <layoutData>
+                                <l:GridData span="XL4 L4 M4 S12" />
+                            </layoutData>
+                        </DatePicker>
+                        <DatePicker id="Bldat--to" displayFormat="dd/MM/yyyy" placeholder="a">
+                            <layoutData>
+                                <l:GridData span="XL4 L4 M4 S12" />
+                            </layoutData>
+                        </DatePicker>
+
+                        <!-- Reference -->
+                        <Label text="{i18n>searchRef}" />
+                        <Input placeholder="da">
+                            <layoutData>
+                                <l:GridData span="XL4 L4 M4 S12" />
+                            </layoutData>
+                        </Input>
+                        <Input placeholder="a">
+                            <layoutData>
+                                <l:GridData span="XL4 L4 M4 S12" />
+                            </layoutData>
+                        </Input>
+                    </f:content>
+                </f:SimpleForm>
+
+                <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="2" labelSpanL="2" labelSpanM="2" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="2" emptySpanL="2" emptySpanM="2" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" backgroundDesign="Transparent">
+                    <f:toolbar>
+                        <Toolbar>
+                            <Title text="{i18n>statusParameters}" />
+                        </Toolbar>
+                    </f:toolbar>
+
+                    <f:content>
+                        <!-- Status -->
+                        <Label />
+                        <RadioButtonGroup id="statusSearchInput" selectedIndex="3">
+                            <RadioButton text="{i18n>searchStatus1}" />
+                            <RadioButton text="{i18n>searchStatus2}" />
+                            <RadioButton text="{i18n>searchStatus3}" />
+                            <RadioButton text="{i18n>searchStatus4}" />
+                        </RadioButtonGroup>
+                    </f:content>
+                </f:SimpleForm>
+            </FlexBox>
+        </content>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button type="Emphasized" text="{i18n>searchConfirm}" press="goAhead" />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

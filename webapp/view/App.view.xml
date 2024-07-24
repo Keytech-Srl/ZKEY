@@ -1,0 +1,51 @@
+<mvc:View
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:tnt="sap.tnt"
+    xmlns="sap.m"
+    controllerName="com.keytech.zkei.controller.App"
+>
+    <tnt:ToolPage id="toolPage">
+        <tnt:header>
+            <tnt:ToolHeader>
+                <Button
+                    id="sideNavigationToggleButton"
+                    icon="sap-icon://menu2"
+                    type="Transparent"
+                    press=".onSideNavButtonPress"
+                />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:sideContent>
+            <tnt:SideNavigation
+                expanded="true"
+                selectedKey="{/selectedKey}"
+                itemSelect=".onItemSelect"
+            >
+                <tnt:NavigationList id="navigationList">
+                    <tnt:NavigationListItem
+                        key="homeButton"
+                        icon="sap-icon://home"
+                        text="Homepage"
+                        select="navTo('Homepage')"
+                    />
+                    <tnt:NavigationListItem
+                        key="passiveInvoicesBtn"
+                        icon="sap-icon://simple-payment"
+                        text="Passive invoices"
+                        select="navTo('SearchRoute')"
+                    />
+                    <tnt:NavigationListItem
+						key="activeInvoicesBtn"
+                        icon="sap-icon://create-form"
+                        text="Active invoices"
+						select="navTo('ActiveInvoices')"
+                    />
+                </tnt:NavigationList>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+        <tnt:mainContents>
+            <App id="app" />
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

@@ -1,0 +1,35 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Dialog id="bukrsMatchcode" title="{i18n>customerDialog}" class="sapUiContentPadding" contentWidth="50%">
+        <Input id="bukrsDialogInput" width="100%" placeholder="{i18n>customerDialogInputPlaceholder}" change="searchCustomer" liveChange="searchCustomer" />
+        <Table id="bukrsTable" items="{matchcodes>/ht001set}" mode="SingleSelectMaster" growing="true" growingThreshold="20" growingScrollToLoad="false" alternateRowColors="true" class="sapUiSizeCompact" selectionChange="selectCustomer">
+            <columns>
+                <Column>
+                    <Text text="{i18n>customerCode}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>customerName}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>customerCity}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>customerCurrency}" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Text text="{matchcodes>Bukrs}" />
+                        <Text text="{matchcodes>Butxt}" />
+                        <Text text="{matchcodes>Ort01}" />
+                        <Text text="{matchcodes>Waers}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <beginButton>
+            <Button text="{i18n>dialogCloseButtonText}" press="closeMatchcodes" />
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

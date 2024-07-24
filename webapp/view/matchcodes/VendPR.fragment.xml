@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Dialog id="vendPRMatchcode" title="{i18n>documentTitleVendPR}" class="sapUiContentPadding" contentWidth="50%">
+        <Input id="vendPRDialogInput" width="100%" placeholder="{i18n>documentPlaceholder}" change="searchVendPR" liveChange="searchVendPR" />
+        <Table id="vendPRTable" items="{matchcodes>/f4_tipo_proc_fat}" mode="SingleSelectMaster" growing="true" growingThreshold="20" growingScrollToLoad="false" alternateRowColors="true" class="sapUiSizeCompact" selectionChange="selectVendPR">
+            <columns>
+                <Column>
+                    <Text text="{i18n>documentColumn1VendPR}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>documentColumn2VendPR}" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Text text="{matchcodes>DOMVALUE_L}" />
+                        <Text text="{matchcodes>DDTEXT}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <beginButton>
+            <Button text="{i18n>dialogCloseButtonText}" press="closeMatchcodes" />
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

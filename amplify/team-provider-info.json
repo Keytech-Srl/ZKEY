@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-zkei-dev-6751d-authRole",
+      "UnauthRoleArn": "arn:aws:iam::103990129728:role/amplify-zkei-dev-6751d-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::103990129728:role/amplify-zkei-dev-6751d-authRole",
+      "Region": "eu-west-3",
+      "DeploymentBucketName": "amplify-zkei-dev-6751d-deployment",
+      "UnauthRoleName": "amplify-zkei-dev-6751d-unauthRole",
+      "StackName": "amplify-zkei-dev-6751d",
+      "StackId": "arn:aws:cloudformation:eu-west-3:103990129728:stack/amplify-zkei-dev-6751d/13463cb0-fbfa-11ee-8b39-0e03e4466fb7",
+      "AmplifyAppId": "d3mvmmj8dkk85v"
+    }
+  }
+}

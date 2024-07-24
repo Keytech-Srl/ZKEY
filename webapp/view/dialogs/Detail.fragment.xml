@@ -1,0 +1,188 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog id="detailDialog" title="{i18n>detailDialog}" class="sapUiContentPadding" contentWidth="50%">
+        <content>
+            <Table>
+                <columns>
+                    <Column>
+                        <Text text="{i18n>detailColumn1}" />
+                    </Column>
+                    <Column>
+                        <Text text="{i18n>detailColumn2}" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailStatus}" />
+                            <HBox>
+                                <core:Icon src="sap-icon://message-warning" color="Critical" visible="{= ${selectedRowData>/Light} === '@09@'}" class="left-align-icon" />
+                            </HBox>
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailClient}" />
+                            <Text text="??" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailProcessingStatus}" />
+                            <Text text="{selectedRowData>/StDescr}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailCompany}" />
+                            <Text text="{selectedRowData>/Bukrs}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailInvoiceUid}" />
+                            <Text text="{selectedRowData>/Eiuid}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailDocFI}" />
+                            <Text text="{selectedRowData>/Gjahr}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailLotUid}" />
+                            <Text text="{selectedRowData>/Lot}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailInvoiceType}" />
+                            <Text text="{selectedRowData>/Tpft}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailDocumentType}" />
+                            <Text text="{selectedRowData>/Tpdoc}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailDocumentDate}" />
+                            <Text text="{selectedRowData>/Bldat}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailSupplier}" />
+                            <Text text="{selectedRowData>/Lifnr}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailCurrency}" />
+                            <Text text="{selectedRowData>/Waers}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailConditionValue}" />
+                            <Text text="{selectedRowData>/Wrbtr}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailReference}" />
+                            <Text text="{selectedRowData>/Xblnr}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailProcessingStatus}" />
+                            <Text text="{selectedRowData>/Status}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailEntryDate}" />
+                            <Text text="{selectedRowData>/Cpudt}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailEntryTime}" />
+                            <Text text="{selectedRowData>/Cputm}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailUserName}" />
+                            <Text text="{selectedRowData>/Usnam}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailDocNumber}" />
+                            <Text text="{selectedRowData>/Numdoc}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailName}" />
+                            <Text text="{selectedRowData>/Name1}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailFtBrow}" />
+                            <Button id="Fatt" icon="sap-icon://internet-browser" press="openInvoiceLink" tooltip="{i18n>detailFtBrow}" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailFtElettr}" />
+                            <Button id="Fattae" icon="sap-icon://vds-file" press="openInvoiceLink" tooltip="{i18n>detailFtElettr}" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailFtAE}" />
+                            <Button id="Fattbr" icon="sap-icon://attachment-html" press="openInvoiceLink" tooltip="{i18n>detailFtAE}" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailNotifications}" />
+                            <Button icon="sap-icon://notification-2" press="openNotification" tooltip="{i18n>detailNotifications}" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailLog}" />
+                            <Button icon="sap-icon://form" press="openLog" tooltip="{i18n>detailLog}" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailNameFile}" />
+                            <Text text="{selectedRowData>/Filename}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{i18n>detailProcessingType}" />
+                            <Text text="{selectedRowData>/VendPR}" class="textBold" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <beginButton>
+            <Button text="{i18n>dialogCloseButtonText}" press="closeDialog" />
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,11 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Dialog id="invoiceDialog" title="{i18n>invoicesPageTitle}" class="sapUiContentPadding" contentWidth="80%" contentHeight="80%" draggable="true" resizable="true">
+        <VBox>
+            <core:HTML id="invoiceHtml" content="{preview>/invoice}" preferDOM="false" />
+        </VBox>
+        <buttons>
+            <Button text="{i18n>dialogCloseButtonText}" press="closeDialog" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

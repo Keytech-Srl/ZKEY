@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <Dialog id="XblnrDialog" title="{i18n>invoicesUpdateSupplierReference}" class="sapUiContentPadding" contentWidth="50%">
+        <l:VerticalLayout class="sapUiContentPadding" width="100%">
+            <Label labelFor="Xblnr" design="Bold" showColon="true" text="{i18n>supplierReference}" />
+            <Input id="Xblnr" value="{selectedRowData>/Xblnr}" width="100%" />
+        </l:VerticalLayout>
+
+        <beginButton>
+            <Button text="{i18n>dialogCloseButtonText}" press="closeDialog" />
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>dialogAcceptButtonText}" press="changeXblnr" type="Emphasized" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

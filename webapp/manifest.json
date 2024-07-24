@@ -1,0 +1,134 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "com.keytech.zkei",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json"
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    
+    "dependencies": {
+      "minUI5Version": "1.122.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.keytech.zkei.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "com.keytech.zkei.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "Homepage",
+          "pattern": "",
+          "target": "Homepage"
+        },
+        {
+          "name": "ActiveInvoices",
+          "pattern": "invoices/active",
+          "target": "ActiveInvoices"
+        },
+        {
+          "name": "SearchRoute",
+          "pattern": "invoices/passive",
+          "target": "Target"
+        },
+        {
+          "name": "InvoicesRoute",
+          "pattern": "invoices/Bukrs={Bukrs}&Gjahr={Gjahr}&Stato_fatt={Stato_fatt}&Lifnr={Lifnr}&Bldat={Bldat}",
+          "target": "TargetInvoices"
+        }
+      ],
+      "targets": {
+        "Homepage": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Homepage",
+          "viewName": "Homepage"
+        },
+        "ActiveInvoices": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ActiveInvoices",
+          "viewName": "ActiveInvoices"
+        },
+        "Target": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Search",
+          "viewName": "Search"
+        },
+        "TargetInvoices": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Invoices",
+          "viewName": "Invoices"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.keytech.zkei.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

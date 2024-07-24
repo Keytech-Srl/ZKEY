@@ -1,0 +1,180 @@
+<mvc:View controllerName="com.keytech.zkei.controller.Invoices" displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.core"
+    xmlns:t="sap.ui.table"
+    xmlns:r="sap.ui.table.rowmodes"
+    xmlns="sap.m">
+    <Page showHeader="false" floatingFooter="true" class="sapUiContentPadding">
+        <content>
+            <FlexBox direction="Column" justifyContent="Start" backgroundDesign="Solid">
+                <Toolbar design="Transparent" class="sapUiTinyMargin">
+                    <Button id="Detail" icon="sap-icon://zoom-in" type="Transparent" tooltip="{i18n>invoicesDetails}" press="openDialog" />
+                    <Button icon="sap-icon://sort-ascending" type="Transparent" tooltip="{i18n>invoicesSortAscending}" press="sortAscending" />
+                    <Button icon="sap-icon://sort-descending" type="Transparent" tooltip="{i18n>invoicesSortDescending}" press="sortDescending" />
+                    <Button icon="sap-icon://filter" type="Transparent" tooltip="{i18n>invoicesSetFilter}" />
+                    <Button icon="sap-icon://sum" type="Transparent" tooltip="{i18n>invoicesTotal}" press="calculateColumnSum" />
+                    <Button icon="sap-icon://excel-attachment" type="Transparent" tooltip="{i18n>invoicesSpreadsheet}" enabled="false" />
+                    <Button id="Document" icon="sap-icon://request" type="Transparent" text="{i18n>invoicesPreAcquireDocument}" tooltip="{i18n>invoicesPreAcquireDocument}" press="openDialog" />
+                    <Button id="Lifnr--Updated" icon="sap-icon://customer" type="Transparent" text="{i18n>invoicesUpdateSupplier}" tooltip="{i18n>invoicesUpdateSupplier}" press="openDialog" />
+                    <Button id="Xblnr--Updated" icon="sap-icon://user-edit" type="Transparent" text="{i18n>invoicesUpdateSupplierReference}" tooltip="{i18n>invoicesUpdateSupplierReference}" press="openDialog" />
+                    <Button icon="sap-icon://refresh" type="Transparent" text="{i18n>invoicesRefresh}" tooltip="{i18n>invoicesRefresh}" press="refreshTable" />
+                    <ToolbarSpacer />
+                    <SearchField width="20%" change="onSearch" liveChange="onSearch" />
+                </Toolbar>
+                <t:Table id="table" rows="{table>/}" selectionMode="Single" selectionBehavior="RowOnly" alternateRowColors="true" rowSelectionChange="selectRowIndex" class="sapUiTinyMargin">
+                    <t:rowMode>
+                        <r:Fixed rowContentHeight="30" rowCount="17" />
+                    </t:rowMode>
+                    <t:columns>
+                        <t:Column width="50px" id="Light">
+                            <Label text="{i18n>invoicesStatus}" />
+                            <t:template>
+                                <c:Icon src="sap-icon://message-warning" color="Critical" visible="{= ${table>Light} === '@09@'}" class="left-align-icon" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="170px" id="StDescr--col" sortProperty="StDescr" filterProperty="StDescr">
+                            <Button text="{i18n>invoicesProcessingStatus}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <Text text="{table>StDescr}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="80px" id="Bukrs--col" sortProperty="Bukrs" filterProperty="Bukrs">
+                            <Button text="{i18n>invoicescustomer}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <Text text="{table>Bukrs}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="80px" id="Gjahr--col" sortProperty="Gjahr" filterProperty="Gjahr">
+                            <Button text="{i18n>invoicesYear}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <Text text="{table>Gjahr}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="120px" id="Numdoc--col" sortProperty="Numdoc" filterProperty="Numdoc">
+                            <Button text="{i18n>invoicesDocumentNumber}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <Text text="{table>Numdoc}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="90px" id="Tpdoc--col" sortProperty="Tpdoc" filterProperty="Tpdoc">
+                            <Button text="{i18n>invoicesDocumentType}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <Text text="{table>Tpdoc}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100px" id="Bldat--col" sortProperty="Bldat" filterProperty="Bldat">
+                            <Button text="{i18n>invoicesDocumentDate}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <Text text="{path: 'table>Bldat', type: 'sap.ui.model.type.Date', formatOptions: {source: { pattern: 'yyyy-MM-dd' }, pattern: 'dd/MM/yyyy'}}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100px" id="Budat--col" sortProperty="Budat" filterProperty="Budat">
+                            <Button text="{i18n>invoicesDate}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <Text text="{table>Budat}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="80px" id="Lifnr--col" sortProperty="Lifnr" filterProperty="Lifnr">
+                            <Button text="{i18n>invoicesSupplier}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <Text text="{table>Lifnr}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="50px" id="Waers--col" sortProperty="Waers" filterProperty="Waers">
+                            <Button text="{i18n>invoicesCurrency}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <Text text="{table>Waers}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100px" id="Wrbtr--col" sortProperty="Wrbtr" filterProperty="Wrbtr">
+                            <Button text="{i18n>invoicesConditionValue}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <HBox>
+                                    <Text text="{table>Wrbtr}" />
+                                </HBox>
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100px" id="Xblnr--col" sortProperty="Xblnr" filterProperty="Xblnr">
+                            <Button text="{i18n>invoicesReference}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <Text text="{table>Xblnr}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100px" id="Cpudt--col" sortProperty="Cpudt" filterProperty="Cpudt">
+                            <Button text="{i18n>invoicesAcquisitionDate}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <Text text="{path: 'table>Cpudt', type: 'sap.ui.model.type.Date', formatOptions: {source: { pattern: 'yyyy-MM-dd' }, pattern: 'dd/MM/yyyy'}}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100px" id="Cputm--col" sortProperty="Cputm" filterProperty="Cputm">
+                            <Button text="{i18n>invoicesTime}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <Text text="{table>Cputm}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100px" id="Usnam--col" sortProperty="Usnam" filterProperty="Usnam">
+                            <Button text="{i18n>invoicesUser}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <Text text="{table>Usnam}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100px" id="RequiredDate--col" sortProperty="RequiredDate" filterProperty="RequiredDate">
+                            <Button text="{i18n>invoicesRequiredDate}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <Text text="{invoiceModel>RequiredDate}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100px" id="Hrric--col" sortProperty="Hrric" filterProperty="Hrric">
+                            <Button text="{i18n>invoicesRequiredTime}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <Text text="{table>Hrric}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100px" id="ProductID--col" sortProperty="ProductID" filterProperty="ProductID">
+                            <Button text="{i18n>invoicesID}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <Text text="{invoiceModel>ProductID}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100px">
+                            <Button text="{i18n>invoicesWebInvoice}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <Button id="Fatt--invoices" icon="sap-icon://internet-browser" type="Transparent" tooltip="{i18n>invoicesWebInvoice}" press="onInvoiceButtonPress" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100px">
+                            <Label text="{i18n>invoicesElectronicInvoice}" />
+                            <t:template>
+                                <Button id="Fattae--invoices" icon="sap-icon://vds-file" type="Transparent" tooltip="{i18n>invoicesElectronicInvoice}" press="onInvoiceButtonPress" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100px">
+                            <Label text="{i18n>invoicesPDFInvoice}" />
+                            <t:template>
+                                <Button id="Fattbr--invoices" icon="sap-icon://attachment-html" type="Transparent" tooltip="{i18n>invoicesPDFInvoice}" press="onInvoiceButtonPress" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100px">
+                            <Label text="{i18n>invoicesNotifications}" />
+                            <t:template>
+                                <Button icon="sap-icon://notification-2" type="Transparent" tooltip="{i18n>invoicesNotifications}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="100px">
+                            <Label text="{i18n>invoicesLog}" />
+                            <t:template>
+                                <Button icon="sap-icon://form" type="Transparent" tooltip="{i18n>invoicesLog}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="200px" id="Filename--col" sortProperty="Filename" filterProperty="Filename">
+                            <Button text="{i18n>invoicesFileName}" type="Transparent" press="selectColumn" class="noButton" />
+                            <t:template>
+                                <Text text="{table>Filename}" />
+                            </t:template>
+                        </t:Column>
+                    </t:columns>
+                </t:Table>
+            </FlexBox>
+        </content>
+    </Page>
+</mvc:View>

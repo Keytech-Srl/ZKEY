@@ -1,0 +1,35 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <Dialog id="lifnrDialog" title="{i18n>supplierDialog}" class="sapUiContentPadding" contentWidth="50%">
+        <l:VerticalLayout class="sapUiContentPadding" width="100%">
+            <Label labelFor="Lifnr" design="Bold" text="{i18n>lifnr}" showColon="true" />
+            <MultiInput id="Lifnr" change="valueChange" liveChange="clearError" suggestionRows="{matchcodes>/kredaset}" suggestionItemSelected="selectSuggestion" valueHelpRequest="openMatchcodes">
+                <layoutData>
+                    <l:GridData span="XL4 L4 M4 S12" />
+                </layoutData>
+                <suggestionColumns>
+                    <Column>
+                        <Text text="{i18n>supplierCode}" />
+                    </Column>
+                    <Column>
+                        <Text text="{i18n>supplierName}" />
+                    </Column>
+                </suggestionColumns>
+                <suggestionRows>
+                    <ColumnListItem>
+                        <Text text="{matchcodes>Lifnr}" />
+                        <Text text="{matchcodes>Mcod1}" />
+                    </ColumnListItem>
+                </suggestionRows>
+            </MultiInput>
+        </l:VerticalLayout>
+
+        <beginButton>
+            <Button id="Lifnr--close" text="{i18n>dialogCloseButtonText}" press="closeDialog" />
+        </beginButton>
+        <endButton>
+            <Button id="Lifnr--accept" text="{i18n>dialogAcceptButtonText}" press="changeLifnr" type="Emphasized" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

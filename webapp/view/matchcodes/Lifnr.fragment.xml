@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Dialog id="lifnrMatchcode" title="{i18n>supplierDialog}" class="sapUiContentPadding" contentWidth="50%">
+        <Input id="lifnrDialogInput" width="100%" placeholder="{i18n>supplierDialogInputPlaceholder}" change="searchLifnr" liveChange="searchLifnr" />
+        <Table id="lifnrTable" items="{matchcodes>/kredaset}" mode="SingleSelectMaster" growing="true" growingThreshold="20" growingScrollToLoad="false" alternateRowColors="true" class="sapUiSizeCompact" selectionChange="selectLifnr">
+            <columns>
+                <Column>
+                    <Text text="{i18n>supplierCode}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>supplierName}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>supplierCity}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>supplierCountry}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>supplierPostalCode}" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Text text="{matchcodes>Lifnr}" />
+                        <Text text="{matchcodes>Mcod1} ({matchcodes>Sortl})" />
+                        <Text text="{matchcodes>Mcod3}" />
+                        <Text text="{matchcodes>Land1}" />
+                        <Text text="{matchcodes>Pstlz}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <beginButton>
+            <Button text="{i18n>dialogCloseButtonText}" press="closeMatchcodes" />
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>
